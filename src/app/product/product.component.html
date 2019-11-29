@@ -1,0 +1,46 @@
+<app-menu [products]="productMess" (product)="value_of_search($event)"></app-menu>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <button class="btn btn-success">Create</button>
+    </div>
+    <div class="col-6" style="text-align: right">
+      <button class="btn btn-primary" (click)="click()">Show/Hide</button>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price($)</th>
+          <th scope="col" *ngIf="showImage">Image</th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of productMess let i=index">
+          <th scope="row">{{ i + 1}}</th>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}$</td>
+          <td *ngIf="showImage">
+            <img src="{{product.image}}" width="{{widthImage}}">
+          </td>
+          <td>
+            <button class="btn btn-secondary">Edit</button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="delete(i)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
